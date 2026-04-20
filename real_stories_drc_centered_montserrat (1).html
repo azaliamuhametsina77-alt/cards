@@ -1,34 +1,35 @@
+<style>@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"); body{background:#fbfbfb;color:#1f1f1f;font-family:"Montserrat",Arial,sans-serif} a{color:inherit}</style>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-.wrap{padding:1.5rem 0}
-.nav{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;flex-wrap:wrap}
-.nav-btn{padding:7px 18px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;font-size:13px;color:var(--color-text-primary);cursor:pointer}
-.nav-btn:hover{background:var(--color-background-secondary)}
+.wrap{padding:1.5rem 16px;max-width:760px;margin:0 auto}
+.nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:1.25rem;flex-wrap:wrap}
+.nav-btn{padding:7px 18px;border-radius:12px;border:0.5px solid #d9d9d9;background:transparent;font-size:13px;color:#1f1f1f;cursor:pointer}
+.nav-btn:hover{background:#f2f2f2}
 .nav-btn:disabled{opacity:.35;cursor:default}
-.nav-count{font-size:13px;color:var(--color-text-tertiary)}
-.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.5rem;margin-bottom:1rem}
+.nav-count{font-size:13px;color:#7a7a7a}
+.card{background:#ffffff;border:0.5px solid #e6e6e6;border-radius:18px;padding:1.25rem 1.25rem 1.1rem;margin:0 auto 1rem;width:100%;max-width:640px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
 .card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:1rem}
 .avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;flex-shrink:0}
 .name-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:3px}
-.p-name{font-size:17px;font-weight:500;color:var(--color-text-primary)}
-.p-anon{font-size:11px;color:var(--color-text-tertiary);padding:1px 7px;border-radius:10px;border:0.5px solid var(--color-border-tertiary)}
-.p-meta{font-size:13px;color:var(--color-text-secondary);line-height:1.5}
+.p-name{font-size:17px;font-weight:500;color:#1f1f1f}
+.p-anon{font-size:11px;color:#7a7a7a;padding:1px 7px;border-radius:10px;border:0.5px solid #e6e6e6}
+.p-meta{font-size:13px;color:#4f4f4f;line-height:1.5}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
 .tag{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500}
-.story{font-size:14px;color:var(--color-text-secondary);line-height:1.8;font-family:var(--font-serif);white-space:pre-line}
+.story{font-size:14px;color:#4f4f4f;line-height:1.75;font-family:"Montserrat",Arial,sans-serif;white-space:pre-line}
 .story-preview{display:block}
 .story-full{display:none;margin-top:.65rem}
 .story-wrap.expanded .story-preview{display:none}
 .story-wrap.expanded .story-full{display:block}
-.expand-btn{margin-top:.75rem;padding:0;border:0;background:none;color:var(--color-text-primary);font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
-.expand-btn:hover{color:var(--color-text-secondary)}
-.outcome{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:var(--border-radius-md);margin:1.1rem 0 1rem}
+.expand-btn{margin-top:.75rem;padding:0;border:0;background:none;color:#1f1f1f;font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.expand-btn:hover{color:#4f4f4f}
+.outcome{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:12px;margin:1.1rem 0 1rem}
 .outcome-icon{width:22px;height:22px;border-radius:50%;border:1.5px solid;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
 .outcome-text{font-size:13px;line-height:1.6}
-.source-row{display:flex;align-items:center;gap:8px;padding-top:.75rem;border-top:0.5px solid var(--color-border-tertiary);flex-wrap:wrap}
+.source-row{display:flex;align-items:center;gap:8px;padding-top:.75rem;border-top:0.5px solid #e6e6e6;flex-wrap:wrap}
 .source-badge{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:500}
-.source-link{font-size:12px;color:var(--color-text-tertiary);text-decoration:none}
-.source-link:hover{color:var(--color-text-secondary)}
+.source-link{font-size:12px;color:#7a7a7a;text-decoration:none}
+.source-link:hover{color:#4f4f4f}
 </style>
 
 <h2 style="position:absolute;width:1px;height:1px;overflow:hidden">Реальные истории из ДР Конго</h2>
@@ -74,10 +75,8 @@ function render(){
       </div>
       <div class="tags">${tagsHtml}</div>
       <div class="story-wrap">
-        <div class="story story-preview">${preview.replace(/
-/g,'<br>')}</div>
-        <div class="story story-full">${s.story.replace(/
-/g,'<br>')}</div>
+        <div class="story story-preview">${preview.replace(/\n/g,'<br>')}</div>
+        <div class="story story-full">${s.story.replace(/\n/g,'<br>')}</div>
         ${s.story.length>260?'<button class="expand-btn" id="expandBtn" onclick="toggleStory()">Развернуть</button>':''}
       </div>
       <div class="outcome" style="background:#E1F5EE">
@@ -88,8 +87,8 @@ function render(){
       </div>
       <div class="source-row">
         <span class="source-badge" style="background:${s.sourceBg};color:${s.sourceColor}">${s.sourceShort}</span>
-        <span style="font-size:12px;color:var(--color-text-secondary)">${s.source}</span>
-        <a class="source-link" href="${s.url}" target="_blank">ссылка</a>
+        <span style="font-size:12px;color:#4f4f4f">${s.source}</span>
+        <a class="source-link" href="${s.url}" target="_blank">читать подробнее</a>
       </div>
     </div>`;
 }
