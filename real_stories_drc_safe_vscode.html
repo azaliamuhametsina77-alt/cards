@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Реальные истории из ДР Конго</title>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');</style>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:#fbfbfb;
+      color:#1f1f1f;
+      font-family:'Montserrat',Arial,sans-serif;
+    }
+    .wrap{
+      padding:24px 16px;
+      max-width:760px;
+      margin:0 auto;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin-bottom:20px;
+      flex-wrap:wrap;
+    }
+    .nav-btn{
+      padding:7px 18px;
+      border-radius:12px;
+      border:0.5px solid #d9d9d9;
+      background:transparent;
+      font-size:13px;
+      color:#1f1f1f;
+      cursor:pointer;
+      font-family:'Montserrat',Arial,sans-serif;
+    }
+    .nav-btn:hover{background:#f2f2f2}
+    .nav-btn:disabled{opacity:.35;cursor:default}
+    .nav-count{font-size:13px;color:#7a7a7a}
+    .card{
+      background:#fff;
+      border:0.5px solid #e6e6e6;
+      border-radius:18px;
+      padding:20px 20px 18px;
+      margin:0 auto 16px;
+      width:100%;
+      max-width:620px;
+      box-shadow:0 1px 2px rgba(0,0,0,.03);
+    }
+    .card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+    .avatar{
+      width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:16px;font-weight:600;flex-shrink:0
+    }
+    .name-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:3px}
+    .p-name{font-size:17px;font-weight:600;color:#1f1f1f}
+    .p-anon{font-size:11px;color:#7a7a7a;padding:1px 7px;border-radius:10px;border:0.5px solid #e6e6e6}
+    .p-meta{font-size:13px;color:#4f4f4f;line-height:1.5}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+    .tag{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500}
+    .story{font-size:14px;color:#4f4f4f;line-height:1.75;white-space:pre-line}
+    .story-preview{display:block}
+    .story-full{display:none;margin-top:10px}
+    .story-wrap.expanded .story-preview{display:none}
+    .story-wrap.expanded .story-full{display:block}
+    .expand-btn{
+      margin-top:12px;padding:0;border:0;background:none;color:#1f1f1f;font-size:13px;cursor:pointer;
+      text-decoration:underline;text-underline-offset:2px;font-family:'Montserrat',Arial,sans-serif;
+    }
+    .expand-btn:hover{color:#4f4f4f}
+    .outcome{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:12px;margin:18px 0 16px;background:#E1F5EE}
+    .outcome-icon{width:22px;height:22px;border-radius:50%;border:1.5px solid #0F6E56;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .outcome-text{font-size:13px;line-height:1.6;color:#0F6E56}
+    .source-row{display:flex;align-items:center;gap:8px;padding-top:12px;border-top:0.5px solid #e6e6e6;flex-wrap:wrap}
+    .source-badge{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600}
+    .source-name{font-size:12px;color:#4f4f4f}
+    .source-link{font-size:12px;color:#7a7a7a;text-decoration:none}
+    .source-link:hover{color:#4f4f4f}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  </style>
+</head>
+<body>
+  <h2 class="sr-only">Реальные истории из ДР Конго</h2>
+  <div class="wrap">
+    <div class="nav">
+      <button class="nav-btn" id="btnPrev" type="button">← назад</button>
+      <span class="nav-count" id="navCount"></span>
+      <button class="nav-btn" id="btnNext" type="button">вперёд →</button>
+    </div>
+    <div id="cardArea"></div>
+  </div>
+
+  <script>
+    const stories = [
+      {
+        name:'Gentille', anon:true, age:'14 лет', loc:'Нумби, Южное Киву',
+        tags:['перемещение','разлучение с семьей','приёмная семья'],
+        tagColors:['coral','amber','teal'], avatarBg:'#FBEAF0', avatarColor:'#993556',
+        story:'Когда в ее деревне началась война, Жантий потерялась и осталась совсем одна — без родителей, без дома, без ничего. Сначала ее временно приютила местная женщина — незнакомка, которая просто не смогла пройти мимо. Потом сотрудники партнерской организации IRC нашли для нее постоянную опекуншу — 68-летнюю Фатуму из Нумби. Фатума уже много лет заботится о чужих детях. Сейчас у нее их восемь.\n\nЖантий называет Фатуму «бабушкой». Теперь у нее снова есть семья. Они вместе танцуют, играют в скакалку, ходят на мастер-классы по рукоделию в Дружественное детям пространство, созданное Международным комитетом спасения (IRC). А еще Жантий мечтает стать врачом: «Чтобы люди говорили: “Жантий тоже училась”».\n\nБлагодаря поддержке Европейского союза и IRC Фатума получает еду, деньги и наборы (одежда, обувь, посуда, зубные щетки). «Одна я бы не смогла помочь всем этим детям», — признается она.\n\nЖантий больше не одна. Но тысячи детей в ДР Конго всё еще ждут того же.',
+        outcome:'Благодаря помощи Международного комитета спасения (IRC) Жантий обрела постоянную опекуншу и безопасное место, где снова может чувствовать себя ребенком.',
+        source:'Международный комитет спасения (IRC)', sourceShort:'IRC', sourceColor:'#185FA5', sourceBg:'#E6F1FB',
+        url:'https://www.rescue.org/eu/article/place-belong-one-teenagers-life-inside-drc-crisis'
+      },
+      {
+        name:'Imani', anon:false, age:'42 года', loc:'Нумби, Южное Киву',
+        tags:['бывший комбатант','психосоциальная помощь','экономическая поддержка'],
+        tagColors:['purple','teal','green'], avatarBg:'#EEEDFE', avatarColor:'#534AB7',
+        story:'Когда Имани с мужем ушли из армии, вернуться к мирной жизни оказалось труднее, чем она думала. Ее преследовали страх и жестокость прошлого. Чтобы справиться, она начала пить, ссориться с мужем и тратить деньги впустую.\n\nОднажды к ней домой пришли женщины из соседской группы поддержки — рассказать о своей программе. Так Имани узнала о центре, который работает при поддержке Международного комитета спасения (IRC) и Европейского Союза.\n\nСначала она получила психосоциальную помощь — место, где можно говорить и где ее понимают. Потом — обучение предпринимательству. А затем — небольшие деньги на развитие дела.\n\nТеперь Имани торгует шлепанцами. Ее маленький бизнес вырос, она зарабатывает достаточно, чтобы кормить девятерых детей и вкладываться в их будущее. Ее дети тоже прошли обучение в центре — те, кто был неуправляемым, стали дисциплинированными.\n\nИмани смогла начать заново. Но многие женщины в ДР Конго всё еще ждут такого же шанса.',
+        outcome:'Имани получила психосоциальную поддержку, обучение и деньги на развитие дела — и смогла начать жизнь заново.',
+        source:'Международный комитет спасения (IRC)', sourceShort:'IRC', sourceColor:'#185FA5', sourceBg:'#E6F1FB',
+        url:'https://www.rescue.org/eu/article/meet-imani-42-year-old-congolese-woman-transforming-her-traumatic-past-through-community'
+      },
+      {
+        name:'Alphonsine', anon:false, age:'65 лет', loc:'Танганьика',
+        tags:['перемещение','пожилые','лагерь ВПЛ'],
+        tagColors:['amber','gray','coral'], avatarBg:'#FAEEDA', avatarColor:'#854F0B',
+        story:'«Я вынуждена бороться каждый день», — говорит 65-летняя Альфонсин.\n\nКогда в ее деревне Рутуку начались межобщинные конфликты, пигмеи убивали людей стрелами. Тем, кому повезло, отделались тяжелыми ранениями. Альфонсин бежала с пятью внуками. Им досталась хижина в лагере Катаника-2.\n\nЧтобы прокормить детей, она каждый день рубила дрова, продавала уголь или листья маниоки. Так она зарабатывала около 2000 конголезских франков (1,25 доллара) — на муку и жаркое. Потом случился пожар. Огонь уничтожил около 2000 хижин в лагере. Хижина Альфонсин сгорела дотла. Вместе с последними вещами семьи. В 65 лет она начинала заново — уже не первый раз.\n\nДетский фонд ООН (ЮНИСЕФ) выдал пострадавшим семьям самое необходимое. «Я получила ведро, канистру, мыло и стаканы, — говорит Альфонсин. — У нас ничего не было, так что эти вещи очень мне пригодились». Она не знает, сможет ли когда-нибудь вернуться в свою деревню.',
+        outcome:'После пожара в лагере Альфонсин получила от ЮНИСЕФ вещи первой необходимости.',
+        source:'ЮНИСЕФ', sourceShort:'ЮНИСЕФ', sourceColor:'#0F6E56', sourceBg:'#E1F5EE',
+        url:'https://www.unicef.org/drcongo/en/stories/starting-all-over-again-65'
+      },
+      {
+        name:'Ketia', anon:false, age:'16 лет', loc:'Киншаса',
+        tags:['уличный ребенок','беременность','защита детей'],
+        tagColors:['coral','pink','teal'], avatarBg:'#FAECE7', avatarColor:'#993C1D',
+        story:'Кетиа жила на улице вместе с матерью целый год. Потом мать умерла, и Кетиа осталась совсем одна. На улице ее ждали постоянное насилие и жестокость. Никакой защиты, никакого взрослого рядом. Это привело к незапланированной беременности.\n\nТе, кто однажды заметил ее, сами когда-то были уличными детьми. Теперь они работают как парасоциальные работники — обученные специалисты при поддержке ЮНИСЕФ.\n\nОни направили Кетиа в медицинские службы, а затем в центр защиты детей в Киншасе. Там дети живут до месяца, пока их не вернут в семью, не передадут временным опекунам или в центры долгосрочной заботы. Каждого ребенка поощряют учиться или осваивать профессию. Кетиа получила шанс, которого у нее не было на улице.',
+        outcome:'Благодаря системе защиты детей при поддержке ЮНИСЕФ Кетиа попала в безопасное место и получила доступ к помощи.',
+        source:'ЮНИСЕФ', sourceShort:'ЮНИСЕФ', sourceColor:'#0F6E56', sourceBg:'#E1F5EE',
+        url:'https://www.unicef.org/drcongo/en/stories/new-start-children-streets'
+      },
+      {
+        name:'Fadhili', anon:false, age:'28 лет', loc:'Гома, Северное Киву',
+        tags:['бывший детский солдат','реинтеграция','медицина'],
+        tagColors:['red','teal','green'], avatarBg:'#FCEBEB', avatarColor:'#A32D2D',
+        story:'В 16 лет Фадили возвращался из школы с одноклассниками. Их перехватили вооруженные люди и насильно забрали в лес. Фадили умел читать и писать — его назначили секретарем, он вел отчеты и протоколы собраний.\n\nВ декабре 2007 года регулярная армия атаковала лагерь. Повстанцев захватили, а Фадили как несовершеннолетнего перевели в транзитный центр при поддержке ЮНИСЕФ. Потом его ждала принимающая семья в Гоме. Приемная семья подарила ему чукуду — деревянный велосипед для перевозки грузов. По утрам он учился, по вечерам возил товары, чтобы заработать на жизнь.\n\nТак он прошел через университет и стал медбратом. Сейчас работает в местном медцентре и учится на педиатра. «Мое самое большое желание — помогать детям».',
+        outcome:'После демобилизации Фадили прошел через реинтеграцию, получил образование и стал медбратом.',
+        source:'ЮНИСЕФ', sourceShort:'ЮНИСЕФ', sourceColor:'#0F6E56', sourceBg:'#E1F5EE',
+        url:'https://www.unicef.org/drcongo/en/stories/weapon-stethoscope-fadhili-former-child-soldier'
+      }
+    ];
+
+    const tagColorMap = {
+      red:['#FCEBEB','#A32D2D'], coral:['#FAECE7','#993C1D'], amber:['#FAEEDA','#854F0B'],
+      teal:['#E1F5EE','#0F6E56'], green:['#EAF3DE','#3B6D11'], purple:['#EEEDFE','#534AB7'],
+      pink:['#FBEAF0','#993556'], gray:['#F1EFE8','#5F5E5A'], blue:['#E6F1FB','#185FA5']
+    };
+
+    let idx = 0;
+
+    function makePreview(text){
+      if(text.length <= 260) return text;
+      const cut = text.slice(0,260);
+      const last = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('— '), cut.lastIndexOf(' '));
+      return (last > 140 ? cut.slice(0,last) : cut).trim() + '…';
+    }
+
+    function createEl(tag, className, text){
+      const el = document.createElement(tag);
+      if(className) el.className = className;
+      if(typeof text === 'string') el.textContent = text;
+      return el;
+    }
+
+    function render(){
+      const s = stories[idx];
+      const cardArea = document.getElementById('cardArea');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      const navCount = document.getElementById('navCount');
+
+      navCount.textContent = (idx + 1) + ' из ' + stories.length;
+      btnPrev.disabled = idx === 0;
+      btnNext.disabled = idx === stories.length - 1;
+      cardArea.innerHTML = '';
+
+      const card = createEl('div', 'card');
+      const cardHead = createEl('div', 'card-head');
+
+      const avatar = createEl('div', 'avatar', s.name.split(' ').map(function(w){ return w[0]; }).join('').slice(0,2).toUpperCase());
+      avatar.style.background = s.avatarBg;
+      avatar.style.color = s.avatarColor;
+
+      const info = createEl('div');
+      info.style.flex = '1';
+      const nameRow = createEl('div', 'name-row');
+      const pName = createEl('span', 'p-name', s.name);
+      nameRow.appendChild(pName);
+      if(s.anon){
+        nameRow.appendChild(createEl('span', 'p-anon', 'имя изменено'));
+      }
+      info.appendChild(nameRow);
+      info.appendChild(createEl('div', 'p-meta', s.age + ' · ' + s.loc));
+
+      cardHead.appendChild(avatar);
+      cardHead.appendChild(info);
+      card.appendChild(cardHead);
+
+      const tags = createEl('div', 'tags');
+      s.tags.forEach(function(tag, i){
+        const chip = createEl('span', 'tag', tag);
+        const colors = tagColorMap[s.tagColors[i]] || ['#F1EFE8','#5F5E5A'];
+        chip.style.background = colors[0];
+        chip.style.color = colors[1];
+        tags.appendChild(chip);
+      });
+      card.appendChild(tags);
+
+      const storyWrap = createEl('div', 'story-wrap');
+      const preview = createEl('div', 'story story-preview', makePreview(s.story));
+      const full = createEl('div', 'story story-full', s.story);
+      storyWrap.appendChild(preview);
+      storyWrap.appendChild(full);
+
+      if(s.story.length > 260){
+        const expandBtn = createEl('button', 'expand-btn', 'Развернуть');
+        expandBtn.type = 'button';
+        expandBtn.addEventListener('click', function(){
+          storyWrap.classList.toggle('expanded');
+          expandBtn.textContent = storyWrap.classList.contains('expanded') ? 'Свернуть' : 'Развернуть';
+        });
+        storyWrap.appendChild(expandBtn);
+      }
+      card.appendChild(storyWrap);
+
+      const outcome = createEl('div', 'outcome');
+      const outcomeIcon = createEl('div', 'outcome-icon');
+      outcomeIcon.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+      const outcomeText = createEl('div', 'outcome-text', s.outcome);
+      outcome.appendChild(outcomeIcon);
+      outcome.appendChild(outcomeText);
+      card.appendChild(outcome);
+
+      const sourceRow = createEl('div', 'source-row');
+      const badge = createEl('span', 'source-badge', s.sourceShort);
+      badge.style.background = s.sourceBg;
+      badge.style.color = s.sourceColor;
+      sourceRow.appendChild(badge);
+      sourceRow.appendChild(createEl('span', 'source-name', s.source));
+      const link = createEl('a', 'source-link', 'читать подробнее');
+      link.href = s.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      sourceRow.appendChild(link);
+      card.appendChild(sourceRow);
+
+      cardArea.appendChild(card);
+    }
+
+    document.getElementById('btnPrev').addEventListener('click', function(){
+      idx = Math.max(0, idx - 1);
+      render();
+    });
+    document.getElementById('btnNext').addEventListener('click', function(){
+      idx = Math.min(stories.length - 1, idx + 1);
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
